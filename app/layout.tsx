@@ -1,37 +1,48 @@
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import "../styles/globals.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
-  const Header = () => (
+  const header = (
     <header>
-      <div>
-        <Link href={'/'} >
-        <h1>My Blog</h1>
+      <div className="text-center bg-slate-800 p-8 my-6 rounded-md">
+        <Image
+          src="/logo.png"
+          width={40}
+          height={40}
+          className="mx-auto"
+          alt={"logo"}
+        />
+        <Link href="/">
+          <h1 className="text-2xl text-white font-bold mt-4">Dev Blogs</h1>
         </Link>
-        <p>Welcome</p>
+        <p className="text-slate-300">Explore Dev blogs</p>
       </div>
     </header>
-  )
+  );
 
   const footer = (
     <footer>
-      <br />
-      <h3>
-        Developed by Ansif
-      </h3>
+      <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
+        <h3>Awesome One</h3>
+      </div>
     </footer>
-  )
+  );
 
   return (
     <html>
+      <head />
       <body>
-        <Header />
-        {children}
+        <div className="mx-auto  max-w-2xl px-6">
+          {header}
+          {children}
+          {footer}
+        </div>
       </body>
     </html>
-  )
+  );
 }
